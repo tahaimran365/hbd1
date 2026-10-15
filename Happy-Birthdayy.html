@@ -280,6 +280,49 @@ canvas{position:fixed; inset:0; pointer-events:none}
   .l{animation-duration:.01s}
   .scene{transition-duration:.3s}
 }
+
+/* ---------- alignment and larger cake refinement ---------- */
+/* Move the birthday content closer to the tree while keeping a comfortable gap. */
+@media (min-width:761px){
+  .scene{
+    padding-left:clamp(72px, 12vw, 190px);
+    padding-right:clamp(16px, 3vw, 44px);
+  }
+  .col{width:min(100%, 660px)}
+  .title-block{min-height:clamp(160px, 24vh, 230px)}
+  .hb{font-size:clamp(4.2rem, min(17vw, 11.2vw + .8rem), 7.8rem)}
+  .name{font-size:clamp(3.6rem, 12vw, 5.2rem)}
+  .stage-row{gap:10px}
+  .stage{width:290px; height:300px}
+  .cake-clip{left:-48px; right:-48px}
+  .cake{width:280px;height:290px;margin-left:-140px;transform:translateY(118px) scale(1.16);transform-origin:50% 100%}
+  .stage.rise .cake{transform:translateY(-36px) scale(1.16)}
+  .stage.settle .cake{transform:scale(1.16)}
+  .plate{width:270px;margin-left:-135px}
+  .tier1{width:230px;margin-left:-115px}
+  .tier2{width:158px;margin-left:-79px}
+  .candles{width:158px;margin-left:-79px}
+  .bear-wrap{width:118px}
+}
+/* Keep the composition centered and comfortably sized on smaller screens. */
+@media (max-width:760px){
+  .scene{padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+  .col{width:100%}
+  .stage{transform:scale(1.06);transform-origin:50% 100%}
+  .stage-row{gap:2px}
+}
+
+/* Final readability tweaks: keep the flame instruction above the bottom edge and enlarge the opening message. */
+#main .col{transform:translateY(-24px)}
+#main .opening .big-hand{font-size:clamp(2.05rem,6.4vw,2.95rem); line-height:1.16; max-width:25ch}
+@media (max-width:760px){
+  #main .col{transform:translateY(-12px)}
+  #main .opening .big-hand{font-size:clamp(1.95rem,7vw,2.55rem)}
+}
+@media (max-height:700px){
+  #main .col{transform:translateY(-34px); gap:12px}
+  #main .title-block{min-height:clamp(110px,17vh,160px)}
+}
 </style>
 
 <canvas id="dust" aria-hidden="true"></canvas>
